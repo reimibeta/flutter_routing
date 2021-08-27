@@ -15,38 +15,92 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
         bloc: bloc,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text('Routing App'),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  'Home Page',
-                  style: TextStyle(fontSize: 50),
+          // body: WillPopScope(
+            // onWillPop: () => LocatorService.tabbarController().handleTabBackEvent(),
+            body: ListView(
+              physics: const ScrollPhysics(),
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 40,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: _Heading(),
                 ),
-                Text(
-                  "this is home page.",
-                  style: TextStyle(fontSize: 20),
-                ),
-                ElevatedButton(
-                  child: Text('Go to first'),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(RoutePage.FIRST_PAGE, arguments: 10);
-                  },
-                ),
-                ElevatedButton(
-                  child: Text('Go to second'),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(RoutePage.SECOND_PAGE,
-                        arguments: 'this is second page');
-                  },
-                ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     top: 20,
+                //     left: 20,
+                //     right: 20,
+                //   ),
+                //   child: SearchBar(),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     top: 10,
+                //     left: 5,
+                //     right: 5,
+                //   ),
+                //   child: CategoriesSmallList(),
+                // ),
+                // MyCarousel(),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20),
+                //   child: FlashSaleSmallList(),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20),
+                //   child: PopularProducts(),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20),
+                //   child: WeekPromotionsSmallList(),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20),
+                //   child: FeaturedProducts(),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     top: 10,
+                //     left: 10,
+                //     right: 10,
+                //   ),
+                //   child: SingleBanner(
+                //     imageUrl: SINGLE_BANNER_HOME_1,
+                //     onPress: _navigateToFlashSale,
+                //   ),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20),
+                //   child: RecommendedProducts(),
+                // ),
               ],
             ),
-          ),
-        ));
+          // ),
+        )
+    );
+  }
+}
+
+class _Heading extends StatelessWidget {
+  const _Heading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: RichText(
+        text: TextSpan(
+            text: 'Welcome to\n',
+            style: Theme.of(context).textTheme.caption,
+            children: [
+              TextSpan(
+                text: 'PCR Pallet Shop',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ]),
+      ),
+    );
   }
 }

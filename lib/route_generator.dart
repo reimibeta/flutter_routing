@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_routing/navigation/tabbar.dart';
 import 'package:flutter_routing/pages/first/first_page.dart';
 import 'package:flutter_routing/pages/home/home_page.dart';
 import 'package:flutter_routing/pages/second/second_page.dart';
@@ -12,6 +13,7 @@ class RoutePage {
   static const HOME_PAGE = "/";
   static const FIRST_PAGE = "/first";
   static const SECOND_PAGE = "/second";
+  static const TAB_BAR = "/tabbar";
 }
 
 // class RouteValidate {
@@ -34,6 +36,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
+      case "/tabbar":
+        return MaterialPageRoute(builder: (_) => TabbarNavigation());
       case RoutePage.FIRST_PAGE:
         if (args is int) {
           return MaterialPageRoute(builder: (_) => FirstPage(data: 10,));

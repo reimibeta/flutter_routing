@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
       // Initially display FirstPage
       // home: FirstPage(),
       // Initially display FirstPage
-      initialRoute: RoutePage.HOME_PAGE,
+      // initialRoute: RoutePage.HOME_PAGE,
+      initialRoute: RoutePage.TAB_BAR,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

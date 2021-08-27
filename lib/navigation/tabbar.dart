@@ -26,97 +26,182 @@ class TabbarNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData _theme = Theme.of(context);
-    return ChangeNotifierProvider<TabbarController>.value(
-      value: LocatorService.tabbarController(),
-      child: CupertinoTabScaffold(
-        controller: LocatorService.tabbarController(),
-        tabBar: CupertinoTabBar(
-          activeColor: AppColors.mLightBlue,
-          // inactiveColor: AppColors.mLightPurple,
-          items: [
-            BottomNavigationBarItem(
-              icon: Selector<TabbarController, int>(
-                selector: (context, d) => d.index,
-                builder: (context, _currentIndex, _) {
-                  return _currentIndex == 0
-                      ? const ActiveTab(icon: Icon(EvaIcons.home))
-                      : const Icon(EvaIcons.homeOutline);
-                },
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Selector<TabbarController, int>(
-                selector: (context, d) => d.index,
-                builder: (context, _currentIndex, _) {
-                  return _currentIndex == 1
-                      ? const ActiveTab(icon: Icon(EvaIcons.heart))
-                      : const Icon(EvaIcons.heartOutline);
-                },
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Selector<TabbarController, int>(
-                selector: (context, d) => d.index,
-                builder: (context, _currentIndex, _) {
-                  return _currentIndex == 2
-                      ? const ActiveTab(icon: Icon(EvaIcons.shoppingBag))
-                      : const Icon(EvaIcons.shoppingBagOutline);
-                },
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Selector<TabbarController, int>(
-                selector: (context, d) => d.index,
-                builder: (context, _currentIndex, _) {
-                  return _currentIndex == 3
-                      ? const ActiveTab(icon: Icon(EvaIcons.person))
-                      : const Icon(EvaIcons.personOutline);
-                },
-              ),
-            ),
-          ],
-          backgroundColor: _theme.scaffoldBackgroundColor,
-          border: const Border(
-            top: BorderSide(
-              width: 0,
-              color: Colors.transparent,
+    // var controller = TabController(length: 3);
+    return CupertinoTabScaffold(
+      // controller: LocatorService.tabbarController(),
+      controller: null,
+      tabBar: CupertinoTabBar(
+        activeColor: AppColors.mLightBlue,
+        // inactiveColor: AppColors.mLightPurple,
+        items: [
+          BottomNavigationBarItem(
+            icon: Selector<TabbarController, int>(
+              selector: (context, d) => d.index,
+              builder: (context, _currentIndex, _) {
+                return _currentIndex == 0
+                    ? const ActiveTab(icon: Icon(EvaIcons.home))
+                    : const Icon(EvaIcons.homeOutline);
+              },
             ),
           ),
-          onTap: (int index) {
-            LocatorService.tabbarController().index = index;
-          },
+          BottomNavigationBarItem(
+            icon: Selector<TabbarController, int>(
+              selector: (context, d) => d.index,
+              builder: (context, _currentIndex, _) {
+                return _currentIndex == 1
+                    ? const ActiveTab(icon: Icon(EvaIcons.heart))
+                    : const Icon(EvaIcons.heartOutline);
+              },
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Selector<TabbarController, int>(
+              selector: (context, d) => d.index,
+              builder: (context, _currentIndex, _) {
+                return _currentIndex == 2
+                    ? const ActiveTab(icon: Icon(EvaIcons.shoppingBag))
+                    : const Icon(EvaIcons.shoppingBagOutline);
+              },
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Selector<TabbarController, int>(
+              selector: (context, d) => d.index,
+              builder: (context, _currentIndex, _) {
+                return _currentIndex == 3
+                    ? const ActiveTab(icon: Icon(EvaIcons.person))
+                    : const Icon(EvaIcons.personOutline);
+              },
+            ),
+          ),
+        ],
+        backgroundColor: _theme.scaffoldBackgroundColor,
+        border: const Border(
+          top: BorderSide(
+            width: 0,
+            color: Colors.transparent,
+          ),
         ),
-        tabBuilder: (context, i) {
-          switch (i) {
-            case 0:
-              return HomePage();
-              break;
-
-            case 1:
-              return HomePage();
-              break;
-
-            case 2:
-              return HomePage();
-              break;
-
-            case 3:
-              return HomePage();
-              break;
-
-            default:
-              return HomePage();
-              break;
-          }
+        onTap: (int index) {
+          LocatorService.tabbarController().index = index;
         },
       ),
+      tabBuilder: (context, i) {
+        switch (i) {
+          case 0:
+            return HomePage();
+            break;
+
+          case 1:
+            return HomePage();
+            break;
+
+          case 2:
+            return HomePage();
+            break;
+
+          case 3:
+            return HomePage();
+            break;
+
+          default:
+            return HomePage();
+            break;
+        }
+      },
     );
+    // return ChangeNotifierProvider<TabbarController>.value(
+    //   value: LocatorService.tabbarController(),
+    //   child: CupertinoTabScaffold(
+    //     controller: LocatorService.tabbarController(),
+    //     tabBar: CupertinoTabBar(
+    //       activeColor: AppColors.mLightBlue,
+    //       // inactiveColor: AppColors.mLightPurple,
+    //       items: [
+    //         BottomNavigationBarItem(
+    //           icon: Selector<TabbarController, int>(
+    //             selector: (context, d) => d.index,
+    //             builder: (context, _currentIndex, _) {
+    //               return _currentIndex == 0
+    //                   ? const ActiveTab(icon: Icon(EvaIcons.home))
+    //                   : const Icon(EvaIcons.homeOutline);
+    //             },
+    //           ),
+    //         ),
+    //         BottomNavigationBarItem(
+    //           icon: Selector<TabbarController, int>(
+    //             selector: (context, d) => d.index,
+    //             builder: (context, _currentIndex, _) {
+    //               return _currentIndex == 1
+    //                   ? const ActiveTab(icon: Icon(EvaIcons.heart))
+    //                   : const Icon(EvaIcons.heartOutline);
+    //             },
+    //           ),
+    //         ),
+    //         BottomNavigationBarItem(
+    //           icon: Selector<TabbarController, int>(
+    //             selector: (context, d) => d.index,
+    //             builder: (context, _currentIndex, _) {
+    //               return _currentIndex == 2
+    //                   ? const ActiveTab(icon: Icon(EvaIcons.shoppingBag))
+    //                   : const Icon(EvaIcons.shoppingBagOutline);
+    //             },
+    //           ),
+    //         ),
+    //         BottomNavigationBarItem(
+    //           icon: Selector<TabbarController, int>(
+    //             selector: (context, d) => d.index,
+    //             builder: (context, _currentIndex, _) {
+    //               return _currentIndex == 3
+    //                   ? const ActiveTab(icon: Icon(EvaIcons.person))
+    //                   : const Icon(EvaIcons.personOutline);
+    //             },
+    //           ),
+    //         ),
+    //       ],
+    //       backgroundColor: _theme.scaffoldBackgroundColor,
+    //       border: const Border(
+    //         top: BorderSide(
+    //           width: 0,
+    //           color: Colors.transparent,
+    //         ),
+    //       ),
+    //       onTap: (int index) {
+    //         LocatorService.tabbarController().index = index;
+    //       },
+    //     ),
+    //     tabBuilder: (context, i) {
+    //       switch (i) {
+    //         case 0:
+    //           return HomePage();
+    //           break;
+    //
+    //         case 1:
+    //           return HomePage();
+    //           break;
+    //
+    //         case 2:
+    //           return HomePage();
+    //           break;
+    //
+    //         case 3:
+    //           return HomePage();
+    //           break;
+    //
+    //         default:
+    //           return HomePage();
+    //           break;
+    //       }
+    //     },
+    //   ),
+    // );
   }
 }
 
 class ActiveTab extends StatelessWidget {
   const ActiveTab({Key? key, this.icon}) : super(key: key);
   final Icon? icon;
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(

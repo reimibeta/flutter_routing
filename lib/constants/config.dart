@@ -14,6 +14,5 @@ abstract class Config {
   static const CURRENCY = 'USD';
   static const CURRENCY_SYMBOL = '\$';
   static const PLACEHOLDER_IMAGE_URL = 'https://via.placeholder.com/100';
-  static const String NETWORK_IMAGE_DIRECTORY_URL =
-      'https://raw.githubusercontent.com/AniketMalik/image-hosting/master/ecommerce_app/';
+  static const String NETWORK_IMAGE_DIRECTORY_URL = 'https://raw.githubusercontent.com/AniketMalik/image-hosting/master/ecommerce_app/';
 }

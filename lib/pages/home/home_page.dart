@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_routing/locator.dart';
 import 'package:flutter_routing/pages/home/bloc_home.dart';
 import 'package:flutter_routing/provider/bloc_provider.dart';
 import 'package:flutter_routing/widgets/carousel.dart';
@@ -18,9 +19,9 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
         bloc: bloc,
         child: Scaffold(
-          // body: WillPopScope(
-            // onWillPop: () => LocatorService.tabbarController().handleTabBackEvent(),
-            body: ListView(
+          body: WillPopScope(
+            onWillPop: () => LocatorService.tabbarController().handleTabBackEvent(),
+            child: ListView(
               physics: const ScrollPhysics(),
               children: const [
                 Padding(
@@ -81,7 +82,7 @@ class HomePage extends StatelessWidget {
                 // ),
               ],
             ),
-          // ),
+          ),
         )
     );
   }

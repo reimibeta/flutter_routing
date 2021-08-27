@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_routing/pages/home/bloc_home.dart';
 import 'package:flutter_routing/provider/bloc_provider.dart';
+import 'package:flutter_routing/widgets/categories_small_list.dart';
+import 'package:flutter_routing/widgets/search_bar.dart';
 
 import '../../route_generator.dart';
 
@@ -28,22 +30,22 @@ class HomePage extends StatelessWidget {
                   ),
                   child: _Heading(),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.only(
-                //     top: 20,
-                //     left: 20,
-                //     right: 20,
-                //   ),
-                //   child: SearchBar(),
-                // ),
-                // Padding(
-                //   padding: EdgeInsets.only(
-                //     top: 10,
-                //     left: 5,
-                //     right: 5,
-                //   ),
-                //   child: CategoriesSmallList(),
-                // ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: SearchBar(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 10,
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: CategoriesSmallList(),
+                ),
                 // MyCarousel(),
                 // Padding(
                 //   padding: EdgeInsets.only(top: 20),

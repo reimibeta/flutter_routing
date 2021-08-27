@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       // Initially display FirstPage
       // home: FirstPage(),
       // Initially display FirstPage
-      initialRoute: '/',
+      initialRoute: RoutePage.HOME_PAGE,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

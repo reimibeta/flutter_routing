@@ -3,6 +3,7 @@ import 'package:flutter_routing/navigation/tabbar.dart';
 import 'package:flutter_routing/pages/first/first_page.dart';
 import 'package:flutter_routing/pages/home/home_page.dart';
 import 'package:flutter_routing/pages/second/second_page.dart';
+import 'package:flutter_routing/pages/tab_nav.dart';
 
 import 'main.dart';
 
@@ -37,7 +38,8 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
       case "/tabbar":
-        return MaterialPageRoute(builder: (_) => TabbarNavigation());
+        // return MaterialPageRoute(builder: (_) => TabbarNavigation());
+        return MaterialPageRoute(builder: (_) => TabNav());
       case RoutePage.FIRST_PAGE:
         if (args is int) {
           return MaterialPageRoute(builder: (_) => FirstPage(data: 10,));

@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_routing/constants/app_strings.dart';
 import 'package:flutter_routing/themes/gradients.dart';
 import 'package:flutter_routing/themes/themeGuide.dart';
+import 'package:flutter_routing/utils/style.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'gradient_button.dart';
@@ -38,7 +39,7 @@ class HeaderImage extends StatelessWidget {
           child: Center(
             // TODO(AniketMalik): Create new image of size 50*50
             child: Image.asset(
-              'lib/assets/images/bag.png',
+              'assets/images/bag.png',
               width: 50,
               height: 50,
               fit: BoxFit.contain,
@@ -125,7 +126,7 @@ class Submit extends StatelessWidget {
 
   final bool isLoading;
   final Function onPress;
-  final String label;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -157,13 +158,13 @@ class ShowError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData _theme = Theme.of(context);
-    if (text.isEmpty) {
+    if (text!.isEmpty) {
       return const SizedBox(height: 20);
     } else {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Text(
-          text,
+          text!,
           style: _theme.textTheme.bodyText1!.copyWith(
             color: _theme.errorColor,
           ),
@@ -175,7 +176,7 @@ class ShowError extends StatelessWidget {
 }
 
 class Loading extends StatelessWidget {
-  const Loading({Key key}) : super(key: key);
+  const Loading({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

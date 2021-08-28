@@ -14,24 +14,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_routing/constants/app_strings.dart';
+import 'package:flutter_routing/themes/themeGuide.dart';
+import 'package:flutter_routing/utils/style.dart';
+import 'package:flutter_routing/widgets/auth_screen_widgets.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:ecommerce_store/constants/appStrings.dart';
-import 'package:ecommerce_store/controllers/authController.dart';
-import 'package:ecommerce_store/shared/authScreenWidgets/authSreenWidgets.dart';
-import 'package:ecommerce_store/utils/style.dart';
-import 'package:ecommerce_store/themes/themeGuide.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({Key key}) : super(key: key);
+  const LoginForm({Key? key}) : super(key: key);
   @override
   LoginFormState createState() => LoginFormState();
 }
 
 class LoginFormState extends State<LoginForm> {
-  String email;
-  String password;
+  String? email;
+  String? password;
   bool _isLoading = false;
   String errorText = '';
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
@@ -52,43 +51,43 @@ class LoginFormState extends State<LoginForm> {
   /// `Note`: Always wrap an authentication request in a try-catch block
   ///
   Future<void> buttonFun() async {
-    if (_formKey.currentState.validate()) {
-      // Start the indicator
-      setState(() => _isLoading = !_isLoading);
-
-      // Authenticate
-      try {
-        // Enter your login logic here or call to a login function from a
-        // service
-        final result = await AuthController.login(email, password);
-        // log('${result.uid}', name: 'Login user uid');
-
-        // If userId is not empty then set the userId in the provider
-        if (result.uid.isNotEmpty) {
-          await AuthController.saveCredentials(result.uid, email);
-
-          // Mock show async functionality
-          await Future.delayed(const Duration(seconds: 1));
-
-          // Navigate to tabbar
-          AuthController.navigateToTabbar();
-
-          return;
-        }
-
-        errorText = '';
-      } on PlatformException catch (e) {
-        errorText = e.message.toString();
-        // log(e.message, name: 'Error message: Login page');
-        // log(e.code, name: 'Error code: Login page');
-      } catch (e) {
-        errorText = AppStrings.somethingWentWrong;
-        // log(e, name: 'Error: Login Page');
-      }
-
-      // Stop the indicator
-      setState(() => _isLoading = !_isLoading);
-    }
+    // if (_formKey.currentState!.validate()) {
+    //   // Start the indicator
+    //   setState(() => _isLoading = !_isLoading);
+    //
+    //   // Authenticate
+    //   try {
+    //     // Enter your login logic here or call to a login function from a
+    //     // service
+    //     final result = await AuthController.login(email, password);
+    //     // log('${result.uid}', name: 'Login user uid');
+    //
+    //     // If userId is not empty then set the userId in the provider
+    //     if (result.uid.isNotEmpty) {
+    //       await AuthController.saveCredentials(result.uid, email);
+    //
+    //       // Mock show async functionality
+    //       await Future.delayed(const Duration(seconds: 1));
+    //
+    //       // Navigate to tabbar
+    //       AuthController.navigateToTabbar();
+    //
+    //       return;
+    //     }
+    //
+    //     errorText = '';
+    //   } on PlatformException catch (e) {
+    //     errorText = e.message.toString();
+    //     // log(e.message, name: 'Error message: Login page');
+    //     // log(e.code, name: 'Error code: Login page');
+    //   } catch (e) {
+    //     errorText = AppStrings.somethingWentWrong;
+    //     // log(e, name: 'Error: Login Page');
+    //   }
+    //
+    //   // Stop the indicator
+    //   setState(() => _isLoading = !_isLoading);
+    // }
   }
 
   @override
@@ -135,7 +134,7 @@ class LoginFormState extends State<LoginForm> {
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(context),
                 FormBuilderValidators.maxLength(context, 40),
-                AuthController.validatePassword,
+                // AuthController.validatePassword,
               ]),
             ),
             Submit(
@@ -155,7 +154,7 @@ class LoginFormState extends State<LoginForm> {
 }
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({Key key}) : super(key: key);
+  const ForgotPassword({Key? key}) : super(key: key);
   Future<void> _launchURL() async {
     const url = 'https://flutter.dev';
     if (await canLaunch(url)) {
@@ -169,7 +168,7 @@ class ForgotPassword extends StatelessWidget {
       onTap: () => _launchURL(),
       child: Text(
         AppStrings.forgotPassword,
-        style: Theme.of(context).textTheme.bodyText1.copyWith(
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
           color: Theme.of(context).primaryColorLight,
         ),
       ),

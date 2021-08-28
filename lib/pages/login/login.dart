@@ -12,6 +12,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_routing/constants/app_strings.dart';
+import 'package:flutter_routing/widgets/auth_screen_widgets.dart';
+import 'package:flutter_routing/widgets/socialButtons/social_button_long.dart';
+
+import 'form/login_form.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -52,6 +57,6 @@ class Login extends StatelessWidget {
   }
 
   static void _goToSignup() {
-    NavigationController.navigator.push(Routes.signup);
+    // NavigationController.navigator.push(Routes.signup);
   }
 }

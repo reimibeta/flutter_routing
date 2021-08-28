@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       // Initially display FirstPage
       // initialRoute: RoutePage.HOME_PAGE,
       initialRoute: RoutePage.TAB_BAR,
+      // initialRoute: RoutePage.LOGIN_PAGE,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

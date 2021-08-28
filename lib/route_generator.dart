@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_routing/navigation/tabbar.dart';
 import 'package:flutter_routing/pages/first/first_page.dart';
 import 'package:flutter_routing/pages/home/home_page.dart';
+import 'package:flutter_routing/pages/login/login.dart';
 import 'package:flutter_routing/pages/second/second_page.dart';
 import 'package:flutter_routing/pages/tab_nav.dart';
 
@@ -15,6 +16,7 @@ class RoutePage {
   static const FIRST_PAGE = "/first";
   static const SECOND_PAGE = "/second";
   static const TAB_BAR = "/tabbar";
+  static const LOGIN_PAGE = "/login";
 }
 
 // class RouteValidate {
@@ -29,20 +31,53 @@ class RoutePage {
 //   }
 // }
 
+// class RouteGuard<T, E> {
+//   static MaterialPageRoute guard<T>({
+//     required Function(T) onLogged,
+//     // Function? onNotLogged,
+//     required Function onFailed,
+//   }) {
+//     // do code to check if user login by preference
+//     bool isLogin = true;
+//     if (isLogin) {
+//       return onLogged();
+//     } else {
+//       return onFailed();
+//     }
+//     // guard user
+//     // if (onGuard != null)
+//     //   onGuard(isLogin);
+//   }
+// }
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
+    // bool login = false;
 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
       case "/tabbar":
-        // return MaterialPageRoute(builder: (_) => TabbarNavigation());
+        // return RouteGuard.guard<TabNav, Login>(
+        //     onLogged: TabNav(), onFailed: Login()
+        //     //   onLogged: (){
+        //     //     return MaterialPageRoute(builder: (_) => TabNav());
+        //     //   }
+        //     //   onFailed: (){
+        //     //   return MaterialPageRoute(builder: (_) => Login());
+        //     // }
+        //     );
         return MaterialPageRoute(builder: (_) => TabNav());
+      case RoutePage.LOGIN_PAGE:
+        return MaterialPageRoute(builder: (_) => Login());
       case RoutePage.FIRST_PAGE:
         if (args is int) {
-          return MaterialPageRoute(builder: (_) => FirstPage(data: 10,));
+          return MaterialPageRoute(
+              builder: (_) => FirstPage(
+                    data: 10,
+                  ));
         }
         return _errorRoute();
       case RoutePage.SECOND_PAGE:

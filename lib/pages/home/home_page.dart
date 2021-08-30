@@ -5,6 +5,7 @@ import 'package:flutter_routing/provider/bloc_provider.dart';
 import 'package:flutter_routing/widgets/carousel.dart';
 import 'package:flutter_routing/widgets/categories_small_list.dart';
 import 'package:flutter_routing/widgets/search_bar.dart';
+import 'package:flutter_routing/widgets/small_list.dart';
 
 import '../../route_generator.dart';
 
@@ -49,10 +50,10 @@ class HomePage extends StatelessWidget {
                   child: CategoriesSmallList(),
                 ),
                 MyCarousel(),
-                // Padding(
-                //   padding: EdgeInsets.only(top: 20),
-                //   child: FlashSaleSmallList(),
-                // ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: FlashSaleSmallList(),
+                ),
                 // Padding(
                 //   padding: EdgeInsets.only(top: 20),
                 //   child: PopularProducts(),

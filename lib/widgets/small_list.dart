@@ -75,61 +75,66 @@ class _SeeAllButton extends StatelessWidget {
 }
 //
 //
-// class _ListContainer extends StatelessWidget {
-//   const _ListContainer({
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: MediaQuery.of(context).size.height / 3,
-//       width: MediaQuery.of(context).size.width,
-//       child: ChangeNotifierProvider<FlashSaleProvider>.value(
-//         value: LocatorService.flashSaleProvider(),
-//         child: Consumer<FlashSaleProvider>(
-//           builder: (context, p, child) {
-//             if (p.isLoading) {
-//               return const Center(child: CustomLoader());
-//             }
-//
-//             if (p.isError) {
-//               return ErrorReload(
-//                 errorMessage: p.errorMessage,
-//                 reloadFunction: () {
-//                   // SchedulerBinding.instance.addPostFrameCallback((_) {
-//                   //   p.fetchPromotionList();
-//                   // });
-//                 },
-//               );
-//             }
-//
-//             if (p.isSuccess) {
-//               return ListView.builder(
-//                 scrollDirection: Axis.horizontal,
-//                 itemCount: p.flashSalePromotionList.length,
-//                 itemBuilder: (context, index) {
-//                   return _ListItem(
-//                     uid: p.flashSalePromotionList[index].uid,
-//                     imageUrl: p.flashSalePromotionList[index].imageUrl,
-//                   );
-//                 },
-//               );
-//             }
-//
-//             if (p.isInitial) {
-//               // SchedulerBinding.instance.addPostFrameCallback((_) {
-//               //   p.fetchPromotionList();
-//               // });
-//             }
-//
-//             return const Center(child: CustomLoader());
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+class _ListContainer extends StatelessWidget {
+  const _ListContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 3,
+      width: MediaQuery.of(context).size.width,
+      child: const Center(child: CustomLoader()),
+    );
+    // return SizedBox(
+    //   height: MediaQuery.of(context).size.height / 3,
+    //   width: MediaQuery.of(context).size.width,
+    //   child: ChangeNotifierProvider<FlashSaleProvider>.value(
+    //     value: LocatorService.flashSaleProvider(),
+    //     child: Consumer<FlashSaleProvider>(
+    //       builder: (context, p, child) {
+    //         if (p.isLoading) {
+    //           return const Center(child: CustomLoader());
+    //         }
+    //
+    //         if (p.isError) {
+    //           return ErrorReload(
+    //             errorMessage: p.errorMessage,
+    //             reloadFunction: () {
+    //               // SchedulerBinding.instance.addPostFrameCallback((_) {
+    //               //   p.fetchPromotionList();
+    //               // });
+    //             },
+    //           );
+    //         }
+    //
+    //         if (p.isSuccess) {
+    //           return ListView.builder(
+    //             scrollDirection: Axis.horizontal,
+    //             itemCount: p.flashSalePromotionList.length,
+    //             itemBuilder: (context, index) {
+    //               return _ListItem(
+    //                 uid: p.flashSalePromotionList[index].uid,
+    //                 imageUrl: p.flashSalePromotionList[index].imageUrl,
+    //               );
+    //             },
+    //           );
+    //         }
+    //
+    //         if (p.isInitial) {
+    //           // SchedulerBinding.instance.addPostFrameCallback((_) {
+    //           //   p.fetchPromotionList();
+    //           // });
+    //         }
+    //
+    //         return const Center(child: CustomLoader());
+    //       },
+    //     ),
+    //   ),
+    // );
+  }
+}
 
 class _ListItem extends StatelessWidget {
   const _ListItem({
